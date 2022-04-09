@@ -1,6 +1,7 @@
+import axios from "axios";
 import { countryDetailsURL } from "../utils/Constants";
-import { getMethod } from "./GetMethod";
 
-export const getMeAPI = async (country: string) => {
-  return await getMethod(countryDetailsURL + country);
+export const getCountryDetailsAPI = async (country: string) => {
+  const { data } = await axios.get(countryDetailsURL + country);
+  return data;
 };

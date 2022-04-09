@@ -1,16 +1,21 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { CssBaseline } from "@mui/material";
+import { createRoot } from "react-dom/client";
+import App from "./App";
+import { QueryClient, QueryClientProvider } from "react-query";
 
-ReactDOM.render(
+const queryClient = new QueryClient();
+const container = document.getElementById("root");
+const root = createRoot(container as HTMLElement);
+
+root.render(
   <React.StrictMode>
     <CssBaseline />
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
+    <QueryClientProvider client={queryClient}>
+      <App />
+    </QueryClientProvider>
+  </React.StrictMode>
 );
-
 reportWebVitals();
