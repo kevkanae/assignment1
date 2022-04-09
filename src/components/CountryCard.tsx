@@ -18,18 +18,23 @@ const CountryCard = (props: ICountryCardProps) => {
   return (
     <Card
       sx={{
-        height: "91vh",
-        width: "42vw",
+        height: "77vh",
+        width: "28vw",
+        backgroundColor: "#14253d",
+        borderRadius: 3,
+        p: "1rem",
+        color: "#f2ffff",
       }}
-      elevation={3}
+      elevation={7}
     >
       <CardContent>
         <Box
           component="img"
           sx={{
-            height: "40vh",
+            height: "30vh",
             width: "100%",
             objectFit: "contain",
+            mb: "1rem",
           }}
           alt="Flag"
           src={props.data.flags.svg}
@@ -38,11 +43,13 @@ const CountryCard = (props: ICountryCardProps) => {
           sx={{
             ...flexCol,
             justifyContent: "space-evenly",
-            p: "1.4rem",
           }}
         >
-          <Typography sx={{ fontSize: 18, fontWeight: 600 }} gutterBottom>
-            Country: {props.data.name.official}
+          <Typography
+            sx={{ fontSize: 21, fontWeight: 600, color: "white" }}
+            gutterBottom
+          >
+            {props.data.name.official}
           </Typography>
           <Typography sx={{ fontSize: 18 }} gutterBottom>
             Population: {props.data.population}
@@ -51,7 +58,9 @@ const CountryCard = (props: ICountryCardProps) => {
             LatLang: {props.data.latlng[0]}, {props.data.latlng[1]}
           </Typography>
           <Typography sx={{ fontSize: 18 }} gutterBottom>
-            ImageURL: <a href={props.data.coatOfArms.png}>Image</a>
+            <a href={props.data.coatOfArms.png} style={{ color: "whitesmoke" }}>
+              Image URL
+            </a>
           </Typography>
         </Box>
       </CardContent>
@@ -66,8 +75,24 @@ const CountryCard = (props: ICountryCardProps) => {
           }}
         >
           <Button
-            size="small"
-            variant="outlined"
+            size="medium"
+            // variant="outlined"
+            sx={{
+              fontSize: 14,
+              backgroundColor: "#244273",
+              color: "#E5F0FF",
+              "&:hover": {
+                backgroundColor: "#4B6498",
+                boxShadow: "none",
+              },
+              "&:active": {
+                boxShadow: "none",
+                backgroundColor: "#4B6498",
+              },
+              // "&:focus": {
+              //   boxShadow: "0 0 0 0.2rem #7188BF",
+              // },
+            }}
             onClick={() => props.getWeatherSignal()}
           >
             Get Weather in Capital

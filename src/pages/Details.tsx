@@ -33,6 +33,7 @@ const Details = () => {
           justifyContent: showWeather ? "space-evenly" : "center",
           height: "100vh",
           width: "100vw",
+          backgroundColor: "#0f1a2b",
         }}
       >
         <CountryCard
