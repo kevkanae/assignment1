@@ -7,6 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import { ICountryDetails } from "../interfaces/CountryDetails";
+import { buttonStyles } from "../styles/ButtonStyles";
 import { flexCol } from "../styles/flex";
 
 interface ICountryCardProps {
@@ -18,7 +19,6 @@ const CountryCard = (props: ICountryCardProps) => {
   return (
     <Card
       sx={{
-        height: "77vh",
         width: "35vw",
         backgroundColor: "#14253d",
         borderRadius: 3,
@@ -46,7 +46,12 @@ const CountryCard = (props: ICountryCardProps) => {
           }}
         >
           <Typography
-            sx={{ fontSize: 21, fontWeight: 600, color: "white" }}
+            sx={{
+              fontSize: 21,
+              fontWeight: 600,
+              color: "white",
+              textAlign: "center",
+            }}
             gutterBottom
           >
             {props.data.name.official}
@@ -77,17 +82,7 @@ const CountryCard = (props: ICountryCardProps) => {
           <Button
             size="medium"
             sx={{
-              fontSize: 14,
-              backgroundColor: "#244273",
-              color: "#E5F0FF",
-              "&:hover": {
-                backgroundColor: "#4B6498",
-                boxShadow: "none",
-              },
-              "&:active": {
-                boxShadow: "none",
-                backgroundColor: "#4B6498",
-              },
+              ...buttonStyles,
             }}
             onClick={() => props.getWeatherSignal()}
           >

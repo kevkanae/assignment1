@@ -1,14 +1,11 @@
 import {
   Box,
-  Button,
   Card,
-  CardActions,
   CardContent,
   CircularProgress,
   Typography,
 } from "@mui/material";
-import { error } from "console";
-import { isError, useQuery } from "react-query";
+import { useQuery } from "react-query";
 import { IWeatherDetails } from "../interfaces/WeatherDetails";
 import { getWeatherDetailsAPI } from "../services/GetWeatherDetails";
 import { flexCol, flexRow } from "../styles/flex";
@@ -28,8 +25,8 @@ const WeatherCard = (props: IWeatherProps) => {
     <Card
       sx={{
         visibility: props.setVisiblity ? "visible" : "hidden",
-        color: "#f2ffff",
         width: "35vw",
+        color: "#f2ffff",
         backgroundColor: "#14253d",
         borderRadius: 3,
         p: "1rem",

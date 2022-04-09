@@ -56,6 +56,7 @@ const Details = () => {
           justifyContent: "center",
           height: "100vh",
           width: "100vw",
+          backgroundColor: "#14253d",
         }}
       >
         <CircularProgress
