@@ -6,13 +6,13 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="MuiBox-root css-1jtc3tp"
+        class="MuiBox-root css-1do5ga1"
       >
         <div
-          class="MuiBox-root css-1kowxga"
+          class="MuiBox-root css-yrjpw7"
         >
           <div
-            class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
+            class="MuiFormControl-root MuiTextField-root css-ki6ctg-MuiFormControl-root-MuiTextField-root"
           >
             <label
               class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
@@ -47,7 +47,7 @@ Object {
             </div>
           </div>
           <button
-            class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root Mui-disabled  css-1rwt2y5-MuiButtonBase-root-MuiButton-root"
+            class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root Mui-disabled  css-18g54ta-MuiButtonBase-root-MuiButton-root"
             disabled=""
             tabindex="-1"
             type="button"
@@ -60,13 +60,13 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="MuiBox-root css-1jtc3tp"
+      class="MuiBox-root css-1do5ga1"
     >
       <div
-        class="MuiBox-root css-1kowxga"
+        class="MuiBox-root css-yrjpw7"
       >
         <div
-          class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
+          class="MuiFormControl-root MuiTextField-root css-ki6ctg-MuiFormControl-root-MuiTextField-root"
         >
           <label
             class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
@@ -101,7 +101,7 @@ Object {
           </div>
         </div>
         <button
-          class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root Mui-disabled  css-1rwt2y5-MuiButtonBase-root-MuiButton-root"
+          class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root Mui-disabled  css-18g54ta-MuiButtonBase-root-MuiButton-root"
           disabled=""
           tabindex="-1"
           type="button"

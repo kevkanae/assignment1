@@ -5,13 +5,11 @@ import { buttonStyles } from "../styles/ButtonStyles";
 import { countryNameStyles } from "../styles/InputStyles";
 
 const Home = () => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const [country, setCountry] = useState<string>("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setCountry(e.currentTarget.value);
-
-  const handleSubmit = () => navigate(`/${country}`);
 
   return (
     <Box
@@ -55,7 +53,7 @@ const Home = () => {
             ...buttonStyles,
           }}
           disabled={country === ""}
-          onClick={handleSubmit}
+          onClick={() => navigate(`/${country}`)}
         >
           Submit
         </Button>
