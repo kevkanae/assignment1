@@ -36,7 +36,7 @@ const Home = () => {
         }}
       >
         <TextField
-          variant="standard"
+          variant="outlined"
           label="Country Name"
           onChange={handleChange}
           value={country}

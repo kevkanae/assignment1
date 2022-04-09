@@ -9,21 +9,27 @@ import {
 import { ICountryDetails } from "../interfaces/CountryDetails";
 import { flexCol } from "../styles/flex";
 
-const CountryCard = (props: { data: ICountryDetails }) => {
+interface ICountryCardProps {
+  data: ICountryDetails;
+  getWeatherSignal: Function;
+}
+
+const CountryCard = (props: ICountryCardProps) => {
   return (
     <Card
       sx={{
         height: "91vh",
         width: "42vw",
       }}
+      elevation={3}
     >
       <CardContent>
         <Box
           component="img"
           sx={{
             height: "40vh",
-            width: "40vw",
-            objectFit: "fill",
+            width: "100%",
+            objectFit: "contain",
           }}
           alt="Flag"
           src={props.data.flags.svg}
@@ -35,14 +41,14 @@ const CountryCard = (props: { data: ICountryDetails }) => {
             p: "1.4rem",
           }}
         >
-          <Typography sx={{ fontSize: 18 }} gutterBottom>
+          <Typography sx={{ fontSize: 18, fontWeight: 600 }} gutterBottom>
             Country: {props.data.name.official}
           </Typography>
           <Typography sx={{ fontSize: 18 }} gutterBottom>
             Population: {props.data.population}
           </Typography>
           <Typography sx={{ fontSize: 18 }} gutterBottom>
-            LatLang: {props.data.latlng}
+            LatLang: {props.data.latlng[0]}, {props.data.latlng[1]}
           </Typography>
           <Typography sx={{ fontSize: 18 }} gutterBottom>
             ImageURL: <a href={props.data.coatOfArms.png}>Image</a>
@@ -59,7 +65,11 @@ const CountryCard = (props: { data: ICountryDetails }) => {
             width: "42vw",
           }}
         >
-          <Button size="small" variant="outlined">
+          <Button
+            size="small"
+            variant="outlined"
+            onClick={() => props.getWeatherSignal()}
+          >
             Get Weather in Capital
           </Button>
         </Box>

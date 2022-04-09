@@ -3,7 +3,7 @@ export interface ICountryDetails {
     official: string;
   };
   capital?: string[] | null;
-  latlng?: number[] | null;
+  latlng: number[];
   population: number;
   flags: {
     png: string;

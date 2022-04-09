@@ -1,20 +1,17 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Typography,
-} from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
+import { useState } from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import CountryCard from "../components/CountryCard";
+import WeatherCard from "../components/WeatherCard";
 import { ICountryDetails } from "../interfaces/CountryDetails";
 import { getCountryDetailsAPI } from "../services/GetCountryDetails";
-import { flexCol } from "../styles/flex";
+import { flexRow } from "../styles/flex";
 
 const Details = () => {
   let params = useParams();
+  const [showWeather, setShowWeather] = useState<boolean>(false);
+
   const { data, isFetched, isError, error } = useQuery<
     ICountryDetails[],
     Error
@@ -32,17 +29,37 @@ const Details = () => {
     return (
       <Box
         sx={{
-          ...flexCol,
+          ...flexRow,
+          justifyContent: showWeather ? "space-evenly" : "center",
+          height: "100vh",
+          width: "100vw",
+        }}
+      >
+        <CountryCard
+          data={data[0] as ICountryDetails}
+          getWeatherSignal={() => setShowWeather(true)}
+        />
+        {showWeather && (
+          <WeatherCard
+            setVisiblity={showWeather}
+            capital={data[0].capital as string[]}
+          />
+        )}
+      </Box>
+    );
+  } else {
+    return (
+      <Box
+        sx={{
+          ...flexRow,
           justifyContent: "center",
           height: "100vh",
           width: "100vw",
         }}
       >
-        <CountryCard data={data[0] as ICountryDetails} />
+        <CircularProgress />
       </Box>
     );
-  } else {
-    return <Box>Loading...</Box>;
   }
 };
 
