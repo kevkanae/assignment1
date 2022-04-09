@@ -19,7 +19,7 @@ const CountryCard = (props: ICountryCardProps) => {
     <Card
       sx={{
         height: "77vh",
-        width: "28vw",
+        width: "35vw",
         backgroundColor: "#14253d",
         borderRadius: 3,
         p: "1rem",
@@ -76,7 +76,6 @@ const CountryCard = (props: ICountryCardProps) => {
         >
           <Button
             size="medium"
-            // variant="outlined"
             sx={{
               fontSize: 14,
               backgroundColor: "#244273",
@@ -89,13 +88,10 @@ const CountryCard = (props: ICountryCardProps) => {
                 boxShadow: "none",
                 backgroundColor: "#4B6498",
               },
-              // "&:focus": {
-              //   boxShadow: "0 0 0 0.2rem #7188BF",
-              // },
             }}
             onClick={() => props.getWeatherSignal()}
           >
-            Get Weather in Capital
+            Get Weather
           </Button>
         </Box>
       </CardActions>

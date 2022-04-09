@@ -58,7 +58,11 @@ const Details = () => {
           width: "100vw",
         }}
       >
-        <CircularProgress />
+        <CircularProgress
+          sx={{
+            color: "#5290bf",
+          }}
+        />
       </Box>
     );
   }

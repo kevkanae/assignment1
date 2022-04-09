@@ -27,10 +27,14 @@ const WeatherCard = (props: IWeatherProps) => {
   return (
     <Card
       sx={{
-        width: "35vw",
         visibility: props.setVisiblity ? "visible" : "hidden",
+        color: "#f2ffff",
+        width: "35vw",
+        backgroundColor: "#14253d",
+        borderRadius: 3,
+        p: "1rem",
       }}
-      elevation={3}
+      elevation={7}
     >
       <CardContent>
         {isFetched && !isError && data ? (
@@ -38,9 +42,10 @@ const WeatherCard = (props: IWeatherProps) => {
             <Box
               component="img"
               sx={{
-                height: "20vh",
+                height: "24vh",
                 width: "100%",
                 objectFit: "contain",
+                mb: "1rem",
               }}
               alt="Flag"
               src={data.current.weather_icons[0]}
@@ -49,10 +54,12 @@ const WeatherCard = (props: IWeatherProps) => {
               sx={{
                 ...flexCol,
                 justifyContent: "space-evenly",
-                p: "1.4rem",
               }}
             >
-              <Typography sx={{ fontSize: 21, fontWeight: 600 }} gutterBottom>
+              <Typography
+                sx={{ fontSize: 21, fontWeight: 600, color: "white" }}
+                gutterBottom
+              >
                 {data.current.temperature}&deg;C
               </Typography>
               <Typography sx={{ fontSize: 21 }} gutterBottom>
@@ -76,7 +83,11 @@ const WeatherCard = (props: IWeatherProps) => {
               width: "100%",
             }}
           >
-            <CircularProgress />
+            <CircularProgress
+              sx={{
+                color: "#5290bf",
+              }}
+            />
           </Box>
         )}
       </CardContent>
