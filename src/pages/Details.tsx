@@ -1,22 +1,18 @@
 import { Box, CircularProgress } from "@mui/material";
 import { useState } from "react";
-import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import CountryCard from "../components/CountryCard";
 import WeatherCard from "../components/WeatherCard";
 import { ICountryDetails } from "../interfaces/CountryDetails";
-import { getCountryDetailsAPI } from "../services/GetCountryDetails";
 import { flexRow } from "../styles/flex";
+import { useFetchCountry } from "../utils/useFetchCountry";
 
 const Details = () => {
   let params = useParams();
   const [showWeather, setShowWeather] = useState<boolean>(false);
 
-  const { data, isFetched, isError, error } = useQuery<
-    ICountryDetails[],
-    Error
-  >(["product", params.countryName], () =>
-    getCountryDetailsAPI(params.countryName as string)
+  const { data, isFetched, isError, error } = useFetchCountry(
+    params.countryName as string
   );
 
   if (isError) {

@@ -5,10 +5,8 @@ import {
   CircularProgress,
   Typography,
 } from "@mui/material";
-import { useQuery } from "react-query";
-import { IWeatherDetails } from "../interfaces/WeatherDetails";
-import { getWeatherDetailsAPI } from "../services/GetWeatherDetails";
 import { flexCol, flexRow } from "../styles/flex";
+import { useFetchWeather } from "../utils/useFetchWeather";
 
 interface IWeatherProps {
   setVisiblity: boolean;
@@ -16,9 +14,8 @@ interface IWeatherProps {
 }
 
 const WeatherCard = (props: IWeatherProps) => {
-  const { data, isFetched, isError, error } = useQuery<IWeatherDetails, Error>(
-    ["product", props.capital[0]],
-    () => getWeatherDetailsAPI(props.capital[0] as string)
+  const { data, isFetched, isError, error } = useFetchWeather(
+    props.capital[0] as string
   );
 
   return (
