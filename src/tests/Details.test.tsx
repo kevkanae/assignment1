@@ -1,19 +1,20 @@
 import { render } from "@testing-library/react";
+import { renderHook } from "@testing-library/react-hooks";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 
 import Details from "../pages/Details";
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: false,
-    },
-  },
-});
+import { useFetchCountry } from "../utils/useFetchCountry";
 
 describe("does the url params", () => {
   test("exist", () => {
+    const queryClient = new QueryClient({
+      defaultOptions: {
+        queries: {
+          retry: false,
+        },
+      },
+    });
     render(
       <MemoryRouter initialEntries={["/:countryName"]}>
         <QueryClientProvider client={queryClient}>
@@ -28,5 +29,24 @@ describe("does the url params", () => {
         countryName: "Japan",
       }),
     }));
+  });
+});
+
+describe("does react query work", () => {
+  const createWrapper = () => {
+    const queryClient = new QueryClient();
+    return ({ children }: any) => (
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    );
+  };
+
+  test("my first test", async () => {
+    const { data, error, isFetched, isError }: any = renderHook(
+      () => useFetchCountry("Japan"),
+      {
+        wrapper: createWrapper(),
+      }
+    );
+    expect(data).toBeDefined();
   });
 });
