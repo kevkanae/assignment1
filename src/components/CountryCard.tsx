@@ -60,6 +60,9 @@ const CountryCard = (props: ICountryCardProps) => {
             Population: {props.data.population}
           </Typography>
           <Typography sx={{ fontSize: 18 }} gutterBottom>
+            Capital: {props.data.capital}
+          </Typography>
+          <Typography sx={{ fontSize: 18 }} gutterBottom>
             LatLang: {props.data.latlng[0]}, {props.data.latlng[1]}
           </Typography>
           <Typography sx={{ fontSize: 18 }} gutterBottom>
