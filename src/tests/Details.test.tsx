@@ -2,22 +2,15 @@ import { render } from "@testing-library/react";
 import { renderHook } from "@testing-library/react-hooks";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
-
 import Details from "../pages/Details";
 import { useFetchCountry } from "../utils/useFetchCountry";
 
 describe("does the url params", () => {
+  const queryClient = new QueryClient();
   test("exist", () => {
-    const queryClient = new QueryClient({
-      defaultOptions: {
-        queries: {
-          retry: false,
-        },
-      },
-    });
     render(
       <MemoryRouter initialEntries={["/:countryName"]}>
-        <QueryClientProvider client={queryClient}>
+        <QueryClientProvider client={queryClient} contextSharing={true}>
           <Details />
         </QueryClientProvider>
       </MemoryRouter>
@@ -32,7 +25,7 @@ describe("does the url params", () => {
   });
 });
 
-describe("does react query work", () => {
+describe("does react query", () => {
   const createWrapper = () => {
     const queryClient = new QueryClient();
     return ({ children }: any) => (
@@ -40,13 +33,15 @@ describe("does react query work", () => {
     );
   };
 
-  test("my first test", async () => {
-    const { data, error, isFetched, isError }: any = renderHook(
+  test("work", async () => {
+    const { result, waitFor }: any = renderHook(
       () => useFetchCountry("Japan"),
       {
         wrapper: createWrapper(),
       }
     );
-    expect(data).toBeDefined();
-  });
+    await waitFor(() => result.current.isSuccess, { timeout: 8000 });
+
+    expect(result.current.data).toBeDefined();
+  }, 10000);
 });
