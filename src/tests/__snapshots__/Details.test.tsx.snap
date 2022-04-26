@@ -3,6 +3,7 @@
 exports[`Snapshot of Home component 1`] = `
 <div
   className="MuiBox-root css-q7q1yu"
+  role="loadbtn"
 >
   <span
     className="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-1gw1ctm-MuiCircularProgress-root"

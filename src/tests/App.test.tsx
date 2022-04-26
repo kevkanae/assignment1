@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import App from "../App";
 const queryClient = new QueryClient();
 
-test("Snapshot of Home component", () => {
+test("Snapshot of App component", () => {
   const comp = renderer.create(
     <BrowserRouter>
       <QueryClientProvider client={queryClient} contextSharing={true}>

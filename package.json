@@ -27,7 +27,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --silent --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -51,5 +51,11 @@
   "devDependencies": {
     "@testing-library/react-hooks": "^8.0.0",
     "@types/react-dom": "^18.0.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!src/index.tsx"
+    ]
   }
 }
