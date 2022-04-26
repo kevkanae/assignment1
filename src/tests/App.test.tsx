@@ -1,19 +1,18 @@
-import { render } from "@testing-library/react";
-import { MemoryRouter, Routes, Route } from "react-router-dom";
-import Details from "../pages/Details";
-import Home from "../pages/Home";
+import renderer from "react-test-renderer";
+import "@testing-library/jest-dom/extend-expect";
+import { BrowserRouter } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "react-query";
+import App from "../App";
+const queryClient = new QueryClient();
 
-describe("do my routers", () => {
-  test("work correctly", () => {
-    let view = render(
-      <MemoryRouter initialEntries={["/", "/India"]}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/:countryName" element={<Details />} />
-        </Routes>
-      </MemoryRouter>
-    );
-
-    expect(view).toMatchSnapshot();
-  });
+test("Snapshot of Home component", () => {
+  const comp = renderer.create(
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient} contextSharing={true}>
+        <App />
+      </QueryClientProvider>
+    </BrowserRouter>
+  );
+  let tree = comp.toJSON();
+  expect(tree).toMatchSnapshot();
 });

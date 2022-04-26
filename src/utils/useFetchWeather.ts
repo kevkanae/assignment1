@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import { IWeatherDetails } from "../interfaces/WeatherDetails";
-import { getWeatherDetailsAPI } from "../services/GetWeatherDetails";
+import { getWeatherDetailsAPI } from "../Services/GetWeatherDetails";
 
 export const useFetchWeather = (capital: string) => {
   const { data, isFetched, isError, error, isSuccess } = useQuery<

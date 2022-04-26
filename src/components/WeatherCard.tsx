@@ -70,6 +70,7 @@ const WeatherCard = (props: IWeatherProps) => {
           </>
         ) : (
           <Box
+            role="loaddd"
             sx={{
               ...flexRow,
               justifyContent: "center",

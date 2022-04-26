@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot of Home component 1`] = `
+<div
+  className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation7 MuiCard-root css-17prhnh-MuiPaper-root-MuiCard-root"
+>
+  <div
+    className="MuiCardContent-root css-46bh2p-MuiCardContent-root"
+  >
+    <img
+      alt="Flag"
+      className="MuiBox-root css-l0b5fg"
+      role="flagbox"
+      src=""
+    />
+    <div
+      className="MuiBox-root css-jwp3xc"
+    >
+      <p
+        className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom css-1iuzxjv-MuiTypography-root"
+        role="offname"
+      />
+      <p
+        className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom css-15ejcyd-MuiTypography-root"
+        role="popu"
+      >
+        Population: 
+        111
+      </p>
+      <p
+        className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom css-15ejcyd-MuiTypography-root"
+        role="cap"
+      >
+        Capital: 
+      </p>
+      <p
+        className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom css-15ejcyd-MuiTypography-root"
+        role="latlang"
+      >
+        LatLang: 
+        1
+        ,
+        1
+      </p>
+      <p
+        className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom css-15ejcyd-MuiTypography-root"
+        role="urltoimg"
+      >
+        <a
+          href=""
+          style={
+            Object {
+              "color": "whitesmoke",
+            }
+          }
+        >
+          Image URL
+        </a>
+      </p>
+    </div>
+  </div>
+  <div
+    className="MuiCardActions-root MuiCardActions-spacing css-1t6e9jv-MuiCardActions-root"
+  >
+    <div
+      className="MuiBox-root css-17ptm9e"
+    >
+      <button
+        className="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root  css-ko1l4s-MuiButtonBase-root-MuiButton-root"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        role="weatherbtn"
+        tabIndex={0}
+        type="button"
+      >
+        Get Weather
+      </button>
+    </div>
+  </div>
+</div>
+`;

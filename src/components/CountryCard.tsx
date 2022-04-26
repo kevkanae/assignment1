@@ -11,7 +11,7 @@ import { buttonStyles } from "../styles/ButtonStyles";
 import { flexCol } from "../styles/flex";
 
 interface ICountryCardProps {
-  data: ICountryDetails;
+  data: ICountryDetails | any;
   getWeatherSignal: Function;
 }
 
@@ -29,6 +29,7 @@ const CountryCard = (props: ICountryCardProps) => {
     >
       <CardContent>
         <Box
+          role="flagbox"
           component="img"
           sx={{
             height: "30vh",
@@ -37,7 +38,7 @@ const CountryCard = (props: ICountryCardProps) => {
             mb: "1rem",
           }}
           alt="Flag"
-          src={props.data.flags.svg}
+          src={props.data?.flags.png ?? ""}
         />
         <Box
           sx={{
@@ -52,21 +53,26 @@ const CountryCard = (props: ICountryCardProps) => {
               color: "white",
               textAlign: "center",
             }}
+            role="offname"
             gutterBottom
           >
-            {props.data.name.official}
+            {props.data?.name.official ?? "-"}
           </Typography>
-          <Typography sx={{ fontSize: 18 }} gutterBottom>
-            Population: {props.data.population}
+          <Typography sx={{ fontSize: 18 }} role="popu" gutterBottom>
+            Population: {props.data?.population ?? "-"}
           </Typography>
-          <Typography sx={{ fontSize: 18 }} gutterBottom>
-            Capital: {props.data.capital}
+          <Typography sx={{ fontSize: 18 }} role="cap" gutterBottom>
+            Capital: {props.data?.capital ?? "-"}
           </Typography>
-          <Typography sx={{ fontSize: 18 }} gutterBottom>
-            LatLang: {props.data.latlng[0]}, {props.data.latlng[1]}
+          <Typography sx={{ fontSize: 18 }} role="latlang" gutterBottom>
+            LatLang: {props.data?.latlng[0] ?? "-"},
+            {props.data?.latlng[1] ?? "-"}
           </Typography>
-          <Typography sx={{ fontSize: 18 }} gutterBottom>
-            <a href={props.data.coatOfArms.png} style={{ color: "whitesmoke" }}>
+          <Typography sx={{ fontSize: 18 }} role="urltoimg" gutterBottom>
+            <a
+              href={props.data?.coatOfArms.png ?? "-"}
+              style={{ color: "whitesmoke" }}
+            >
               Image URL
             </a>
           </Typography>
@@ -83,6 +89,7 @@ const CountryCard = (props: ICountryCardProps) => {
           }}
         >
           <Button
+            role="weatherbtn"
             size="medium"
             sx={{
               ...buttonStyles,

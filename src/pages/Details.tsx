@@ -47,6 +47,7 @@ const Details = () => {
   } else {
     return (
       <Box
+        role="loadbtn"
         sx={{
           ...flexRow,
           justifyContent: "center",

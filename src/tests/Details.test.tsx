@@ -1,12 +1,25 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { renderHook } from "@testing-library/react-hooks";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter, BrowserRouter } from "react-router-dom";
 import Details from "../pages/Details";
+import renderer from "react-test-renderer";
 import { useFetchCountry } from "../utils/useFetchCountry";
+const queryClient = new QueryClient();
+
+test("Snapshot of Home component", () => {
+  const comp = renderer.create(
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient} contextSharing={true}>
+        <Details />
+      </QueryClientProvider>
+    </BrowserRouter>
+  );
+  let tree = comp.toJSON();
+  expect(tree).toMatchSnapshot();
+});
 
 describe("does the url params", () => {
-  const queryClient = new QueryClient();
   test("exist", () => {
     render(
       <MemoryRouter initialEntries={["/:countryName"]}>
@@ -44,4 +57,16 @@ describe("does react query", () => {
 
     expect(result.current.data).toBeDefined();
   }, 10000);
+
+  test("is the button present", () => {
+    render(
+      <BrowserRouter>
+        <QueryClientProvider client={queryClient} contextSharing={true}>
+          <Details />
+        </QueryClientProvider>
+      </BrowserRouter>
+    );
+    const btn = screen.getByRole("loadbtn");
+    expect(btn).toBeInTheDocument();
+  });
 });
