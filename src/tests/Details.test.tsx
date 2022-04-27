@@ -1,13 +1,11 @@
 import { render, screen } from "@testing-library/react";
-import { renderHook } from "@testing-library/react-hooks";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { MemoryRouter, BrowserRouter } from "react-router-dom";
+import { MemoryRouter, BrowserRouter, Route, Routes } from "react-router-dom";
 import Details from "../pages/Details";
 import renderer from "react-test-renderer";
-import { useFetchCountry } from "../utils/useFetchCountry";
 const queryClient = new QueryClient();
 
-test("Snapshot of Home component", () => {
+test("Snapshot of Details component", () => {
   const comp = renderer.create(
     <BrowserRouter>
       <QueryClientProvider client={queryClient} contextSharing={true}>
@@ -19,46 +17,26 @@ test("Snapshot of Home component", () => {
   expect(tree).toMatchSnapshot();
 });
 
-describe("does the url params", () => {
-  test("exist", () => {
+describe("does use params", () => {
+  jest.setTimeout(10000);
+  test("work in custom fetch hook", async () => {
     render(
-      <MemoryRouter initialEntries={["/:countryName"]}>
-        <QueryClientProvider client={queryClient} contextSharing={true}>
-          <Details />
-        </QueryClientProvider>
-      </MemoryRouter>
+      <QueryClientProvider client={queryClient} contextSharing={true}>
+        <MemoryRouter initialEntries={["/India"]}>
+          <Routes>
+            <Route path="/:countryName" element={<Details />} />
+          </Routes>
+        </MemoryRouter>
+      </QueryClientProvider>
     );
 
-    jest.mock("react-router-dom", () => ({
-      ...jest.requireActual("react-router-dom"),
-      useParams: () => ({
-        countryName: "Japan",
-      }),
-    }));
+    await new Promise((r) => setTimeout(r, 3000));
+    expect(screen.getByRole("mainbox")).toBeInTheDocument();
   });
 });
 
-describe("does react query", () => {
-  const createWrapper = () => {
-    const queryClient = new QueryClient();
-    return ({ children }: any) => (
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-    );
-  };
-
-  test("work", async () => {
-    const { result, waitFor }: any = renderHook(
-      () => useFetchCountry("Japan"),
-      {
-        wrapper: createWrapper(),
-      }
-    );
-    await waitFor(() => result.current.isSuccess, { timeout: 8000 });
-
-    expect(result.current.data).toBeDefined();
-  }, 10000);
-
-  test("is the button present", () => {
+describe("In Details", () => {
+  test("does loading work when params is undefined", async () => {
     render(
       <BrowserRouter>
         <QueryClientProvider client={queryClient} contextSharing={true}>
@@ -66,7 +44,7 @@ describe("does react query", () => {
         </QueryClientProvider>
       </BrowserRouter>
     );
-    const btn = screen.getByRole("loadbtn");
-    expect(btn).toBeInTheDocument();
+
+    expect(screen.getByRole("loadbtn")).toBeInTheDocument();
   });
 });

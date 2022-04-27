@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Snapshot of Home component 1`] = `
+exports[`Snapshot of Country Card 1`] = `
 <div
   className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation7 MuiCard-root css-17prhnh-MuiPaper-root-MuiCard-root"
 >
@@ -53,9 +53,7 @@ exports[`Snapshot of Home component 1`] = `
               "color": "whitesmoke",
             }
           }
-        >
-          Image URL
-        </a>
+        />
       </p>
     </div>
   </div>

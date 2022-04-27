@@ -73,7 +73,7 @@ const CountryCard = (props: ICountryCardProps) => {
               href={props.data?.coatOfArms.png ?? "-"}
               style={{ color: "whitesmoke" }}
             >
-              Image URL
+              {props.data?.coatOfArms.png ?? "-"}
             </a>
           </Typography>
         </Box>

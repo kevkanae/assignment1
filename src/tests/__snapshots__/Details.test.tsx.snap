@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Snapshot of Home component 1`] = `
+exports[`Snapshot of Details component 1`] = `
 <div
   className="MuiBox-root css-q7q1yu"
   role="loadbtn"

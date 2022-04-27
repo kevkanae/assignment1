@@ -21,30 +21,8 @@ const Details = () => {
         <Box>There was an Error: {error}</Box>
       </>
     );
-  } else if (isFetched && !isError && data) {
-    return (
-      <Box
-        sx={{
-          ...flexRow,
-          justifyContent: showWeather ? "space-evenly" : "center",
-          height: "100vh",
-          width: "100vw",
-          backgroundColor: "#0f1a2b",
-        }}
-      >
-        <CountryCard
-          data={data[0] as ICountryDetails}
-          getWeatherSignal={() => setShowWeather(true)}
-        />
-        {showWeather && (
-          <WeatherCard
-            setVisiblity={showWeather}
-            capital={data[0].capital as string[]}
-          />
-        )}
-      </Box>
-    );
-  } else {
+  }
+  if (!isFetched && !data) {
     return (
       <Box
         role="loadbtn"
@@ -64,6 +42,32 @@ const Details = () => {
       </Box>
     );
   }
+
+  return (
+    <Box
+      sx={{
+        ...flexRow,
+        justifyContent: showWeather ? "space-evenly" : "center",
+        height: "100vh",
+        width: "100vw",
+        backgroundColor: "#0f1a2b",
+      }}
+      role="mainbox"
+    >
+      {data && (
+        <CountryCard
+          data={data[0] as ICountryDetails}
+          getWeatherSignal={() => setShowWeather(true)}
+        />
+      )}
+      {showWeather && data && (
+        <WeatherCard
+          setVisiblity={showWeather}
+          capital={data[0].capital as string[]}
+        />
+      )}
+    </Box>
+  );
 };
 
 export default Details;

@@ -5,6 +5,8 @@ import { BrowserRouter } from "react-router-dom";
 import CountryCard from "../components/CountryCard";
 import { QueryClient, QueryClientProvider } from "react-query";
 
+const queryClient = new QueryClient();
+
 const data = {
   name: {
     official: "",
@@ -19,8 +21,8 @@ const data = {
     png: "",
   },
 };
-const queryClient = new QueryClient();
-test("Snapshot of Home component", () => {
+
+test("Snapshot of Country Card", () => {
   const comp = renderer.create(
     <BrowserRouter>
       <QueryClientProvider client={queryClient} contextSharing={true}>
@@ -41,29 +43,20 @@ describe("In Country Card,", () => {
         </QueryClientProvider>
       </BrowserRouter>
     );
+
     const flagbox = screen.getByRole("flagbox");
     const offname = screen.getByRole("offname");
     const popu = screen.getByRole("popu");
     const cap = screen.getByRole("cap");
     const latlang = screen.getByRole("latlang");
     const urltoimg = screen.getByRole("urltoimg");
+    const btn = screen.getByRole("weatherbtn");
     expect(flagbox).toBeInTheDocument();
     expect(offname).toBeInTheDocument();
     expect(popu).toBeInTheDocument();
     expect(cap).toBeInTheDocument();
     expect(latlang).toBeInTheDocument();
     expect(urltoimg).toBeInTheDocument();
-  });
-
-  test("is the button present", () => {
-    render(
-      <BrowserRouter>
-        <QueryClientProvider client={queryClient} contextSharing={true}>
-          <CountryCard data={data} getWeatherSignal={() => {}} />
-        </QueryClientProvider>
-      </BrowserRouter>
-    );
-    const btn = screen.getByRole("weatherbtn");
     expect(btn).toBeInTheDocument();
   });
 });
