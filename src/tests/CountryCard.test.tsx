@@ -1,6 +1,6 @@
 import renderer from "react-test-renderer";
 import "@testing-library/jest-dom/extend-expect";
-import { screen, render } from "@testing-library/react";
+import { screen, render, fireEvent } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import CountryCard from "../components/CountryCard";
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -50,13 +50,15 @@ describe("In Country Card,", () => {
     const cap = screen.getByRole("cap");
     const latlang = screen.getByRole("latlang");
     const urltoimg = screen.getByRole("urltoimg");
-    const btn = screen.getByRole("weatherbtn");
     expect(flagbox).toBeInTheDocument();
     expect(offname).toBeInTheDocument();
     expect(popu).toBeInTheDocument();
     expect(cap).toBeInTheDocument();
     expect(latlang).toBeInTheDocument();
     expect(urltoimg).toBeInTheDocument();
+
+    const btn = screen.getByRole("weatherbtn");
     expect(btn).toBeInTheDocument();
+    expect(fireEvent.click(btn)).toBeTruthy();
   });
 });
